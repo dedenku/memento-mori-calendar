@@ -23,8 +23,6 @@ function saveBirthDate(date) {
     localStorage.setItem(BIRTH_DATE_KEY, date);
 }
 
-console.log(getSavedBirthDate());
-
 // Fungsi untuk mengambil tanggal dari localStorage
 function getSavedBirthDate() {
     return localStorage.getItem(BIRTH_DATE_KEY);
@@ -120,16 +118,12 @@ function generateCalendar() {
 }
 
 btnGenerate.addEventListener('click', () => {
-    console.log(dateOfBirth.value);
-    console.log(getAgeInWeeks(dateOfBirth.value));
-    console.log(userAge);
     if (!dateOfBirth.value) {
         return;
     } else {
 
         generateCalendar();
         dateContainer.style.display = "none";
-        console.log(getSavedBirthDate());
     }
 
 
@@ -166,7 +160,6 @@ showRandomQuote();
 
 const changeDate = document.querySelector('.btn-date');
 changeDate.addEventListener('click', () => {
-    console.log("TEST");
     dateContainer.style.display = "flex";
     gridContainer.innerHTML = '';
     ages = startAge;
