@@ -11,8 +11,24 @@ const maxAge = 520; // Maksimum minggu yang ditampilkan
 const weeksPerLine = maxAge; // Jumlah minggu per baris
 
 dateOfBirth.addEventListener('input', () => {
-    userAge = getAgeInWeeks(dateOfBirth.value);
+    saveBirthDate(dateOfBirth.value);
+    userAge = getAgeInWeeks(getSavedBirthDate());
 })
+
+// Konstanta untuk key localStorage
+const BIRTH_DATE_KEY = 'mementoMori_birthDate';
+
+// Fungsi untuk menyimpan tanggal ke localStorage
+function saveBirthDate(date) {
+    localStorage.setItem(BIRTH_DATE_KEY, date);
+}
+
+console.log(getSavedBirthDate());
+
+// Fungsi untuk mengambil tanggal dari localStorage
+function getSavedBirthDate() {
+    return localStorage.getItem(BIRTH_DATE_KEY);
+}
 
 // Fungsi untuk mendapatkan umur dalam minggu dari format YYYY-MM-DD
 function getAgeInWeeks(dateString) {
@@ -36,6 +52,23 @@ function getAgeInWeeks(dateString) {
 function getPassedWeeks(currentWeek, currentAge) {
     return currentWeek + (currentAge * weeksPerLine);
 }
+
+// Fungsi inisialisasi
+function initializeDateInput() {
+    // Cek apakah ada tanggal tersimpan
+    const savedDate = getSavedBirthDate();
+
+    if (savedDate) {
+        // Set nilai input ke tanggal yang tersimpan
+        dateOfBirth.value = savedDate;
+        dateContainer.style.display = 'none';
+
+        // Generate kalender berdasarkan data yang tersimpan
+        userAge = getAgeInWeeks(getSavedBirthDate());
+        generateCalendar();
+    }
+}
+initializeDateInput();
 
 function generateCalendar() {
     // Membuat grid kalender
@@ -96,6 +129,7 @@ btnGenerate.addEventListener('click', () => {
 
         generateCalendar();
         dateContainer.style.display = "none";
+        console.log(getSavedBirthDate());
     }
 
 
@@ -121,7 +155,6 @@ function showRandomQuote() {
         console.error("Quotes data is empty.");
         return;
     }
-
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     quoteContainer.innerHTML = `
         <blockquote>${randomQuote.text}</blockquote>
@@ -142,14 +175,14 @@ changeDate.addEventListener('click', () => {
 document.querySelector('.btn-quote').addEventListener('click', () => showRandomQuote());
 
 // export PDF
- // Fungsi untuk export ke PDF
- function exportToPDF() {
+// Fungsi untuk export ke PDF
+function exportToPDF() {
     const element = document.getElementById('calendar');
     const opt = {
-        margin: [0,0],
+        margin: [0, 0],
         filename: 'memento-mori-calendar.pdf',
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 , scrollY: 0},
+        html2canvas: { scale: 2, scrollY: 0 },
         pagebreak: { mode: 'avoid-all', before: '#page2el' },
         jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
     };
@@ -165,13 +198,13 @@ document.querySelector('.btn-pdf').addEventListener('click', () => printCalendar
 function printCalendar() {
     // Simpan judul halaman asli
     // const originalTitle = document.title;
-    
+
     // Set judul untuk hasil cetak
     // document.title = 'Memento Mori Calendar';
-    
+
     // Jalankan fungsi print
     window.print();
-    
+
     // Kembalikan judul asli
     // document.title = originalTitle;
 }
