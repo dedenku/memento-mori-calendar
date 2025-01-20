@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap");
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+/* @page {
+  margin: 20mm;
+} */
+
+[type="date"] {
+  background: #fff
+    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+    97% 50% no-repeat;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.date-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+  z-index: 999;
+}
+
+.splash-title {
+  font-family: "Old Standard TT", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: normal;
+  /* letter-spacing: 1.5rem; */
+  text-align: center;
+  p {
+    font-family: sans-serif;
+    margin-bottom: 100px;
+  }
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  font-family: "Old Standard TT", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#dateofbirth {
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.btn {
+  border: none;
+  padding: 25px 50px;
+  color: white;
+  background-color: #000;
+  cursor: pointer;
+  /* margin-bottom: 20px; */
+  border-radius: 50px;
+}
+
+input {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 3px 5px;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+  width: 190px;
+}
+
+.main-title h1 {
+  font-family: "Old Standard TT", serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1.5rem;
+  text-align: center;
+  line-height: 1rem;
+  margin-top: 2rem;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.grid-box {
+  display: grid;
+  grid-template-columns: repeat(54, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  margin-bottom: 10px;
+}
+
+.mid-space {
+  width: 5px;
+  height: 8px;
+  grid-area: 1 / 27 / 11 / 28;
+}
+
+.ages {
+  grid-area: 1 / 54 / 11 / 55;
+}
+
+.ages {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  line-height: 0.7;
+  font-size: 0.8rem;
+}
+.life-dot {
+  width: 8px;
+  height: 8px;
+  /* background-color: #000; */
+  border: 0.25px solid #000000;
+}
+
+.life-dot-filled {
+  border: 0.25px solid #000000;
+  background-color: #000;
+}
+
+#quote-container {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+blockquote {
+  font-weight: 100;
+  font-size: 2rem;
+  max-width: 600px;
+  line-height: 1.4;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 0.5rem;
+  text-align: center;
+}
+blockquote:before,
+blockquote:after {
+  position: absolute;
+  color: #d6d6d6;
+  font-size: 8rem;
+  width: 4rem;
+  height: 4rem;
+}
+
+blockquote:before {
+  content: "“";
+  left: -5rem;
+  top: -3rem;
+}
+
+blockquote:after {
+  content: "”";
+  right: -5rem;
+  bottom: 1rem;
+}
+
+cite {
+  line-height: 2;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* margin-bottom: 20px; */
+  position: relative;
+  bottom: 0;
+}
+
+.menu button {
+  margin: 5px;
+}
+
+.menu-bar {
+  width: 300px;
+  height: 70px;
+  background: #000;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-nav {
+  width: 50px;
+  height: 50px;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.btn-nav:hover {
+  background: rgb(54, 54, 54);
+}
+
+.btn-nav svg {
+  height: 25px;
+  color: #fff;
+}
+/* 
+.btn-quote {
+  position: relative;
+  transform: translateY(-20px);
+  border: 8px solid #fff;
+  width: 80px;
+  height: 80px;
+} */
